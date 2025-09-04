@@ -34,6 +34,7 @@ public class FeesTest {
     assertEquals(FeesStatus.LATE, L1Fees.getFeesStatusAt(Instant.parse("2025-10-12T00:00:00Z")));
   }
 
+  @Test
   public void should_return_in_progress_fees_status_ok() {
 
     Student me = new Student("STD24033", "Nicky", "Hariniaina", LocalDate.of(2024, 9, 18),
@@ -50,6 +51,7 @@ public class FeesTest {
 
   }
 
+  @Test
   public void should_return_paid_fees_status_ok() {
 
     Student me = new Student("STD24033", "Nicky", "Hariniaina", LocalDate.of(2024, 9, 18),
@@ -65,6 +67,7 @@ public class FeesTest {
 
   }
 
+  @Test
   public void should_return_overpaid_fees_status_ok() {
 
     Student me = new Student("STD24033", "Nicky", "Hariniaina", LocalDate.of(2024, 9, 18),

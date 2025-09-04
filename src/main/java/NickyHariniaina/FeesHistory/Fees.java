@@ -30,7 +30,7 @@ public class Fees {
       current_status = FeesStatus.PAID;
     } else if (targetDate.isAfter(deadline) && feesAlreadyPaid < feesToPay) {
       current_status = FeesStatus.LATE;
-    } else if (targetDate.isAfter(deadline) && feesAlreadyPaid > feesToPay) {
+    } else if (feesAlreadyPaid > feesToPay) {
       current_status = FeesStatus.OVERPAID;
     }
     return current_status;
