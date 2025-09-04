@@ -3,11 +3,11 @@ package NickyHariniaina.FeesHistory;
 import java.time.LocalDate;
 import java.util.HashMap;
 
-import javax.swing.GroupLayout.Group;
-
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 @Getter
+@EqualsAndHashCode
 public class Student {
 
   private final String id;

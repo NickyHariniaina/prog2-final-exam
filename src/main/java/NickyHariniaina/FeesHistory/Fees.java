@@ -3,6 +3,7 @@ package NickyHariniaina.FeesHistory;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.HashMap;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,24 +20,31 @@ public class Fees {
   private Student targetStudent;
   private FeesStatus status;
 
+  private HashMap<Instant, Double> paidFeesHistory = new HashMap<>();
+
   public FeesStatus getFeesStatusAt(Instant t) {
-    FeesStatus current_status = FeesStatus.PAID;
     ZoneId zone = ZoneId.systemDefault();
     LocalDate targetDate = LocalDate.ofInstant(t, zone);
 
     if (targetDate.isBefore(deadline) && feesAlreadyPaid < feesToPay) {
-      current_status = FeesStatus.IN_PROGRESS;
+
+      this.status = FeesStatus.IN_PROGRESS;
     } else if (feesAlreadyPaid == feesToPay) {
-      current_status = FeesStatus.PAID;
+      this.status = FeesStatus.PAID;
     } else if (targetDate.isAfter(deadline) && feesAlreadyPaid < feesToPay) {
-      current_status = FeesStatus.LATE;
+      this.status = FeesStatus.LATE;
     } else if (feesAlreadyPaid > feesToPay) {
-      current_status = FeesStatus.OVERPAID;
+      this.status = FeesStatus.OVERPAID;
     }
-    return current_status;
+    return this.status;
   }
 
   public void payFees(Paiment paiment) {
     this.feesAlreadyPaid += paiment.getPaidFees();
+    this.paidFeesHistory.put(paiment.getDateTimeOfPaiment(), paiment.getPaidFees());
+  }
+
+  public double getTotalRemaingFeesToPay() {
+    return this.feesToPay - this.feesAlreadyPaid;
   }
 }
