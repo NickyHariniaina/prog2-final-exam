@@ -23,10 +23,12 @@ public class FeesTest {
     Student me = new Student("STD24033", "Nicky", "Hariniaina", LocalDate.of(2024, 9, 18),
         new ClassGroup("001", "K2"));
 
-    Fees L1Fees = new Fees("001", "First year fees", 2_000_000.00, LocalDate.of(2025, 8, 30), me,
+    Fees L1Fees = new Fees("001", "First year fees", 2_000_000.00, 0.00, LocalDate.of(2025, 8, 30), me,
         FeesStatus.IN_PROGRESS);
 
-    Paiment myPaiment = new MobilePaiment("001", 1_000_000.00, Instant.now(), "MP001");
+    Paiment myPaiment = new MobilePaiment("001", 1_000_000.00, Instant.parse("2024-04-12T00:00:00Z"), "MP001");
+
+    L1Fees.payFees(myPaiment);
 
     assertEquals(FeesStatus.IN_PROGRESS, L1Fees.getFeesStatusAt(Instant.parse("2025-04-13T23:58:11Z")));
     assertEquals(FeesStatus.LATE, L1Fees.getFeesStatusAt(Instant.parse("2025-10-12T00:00:00Z")));
