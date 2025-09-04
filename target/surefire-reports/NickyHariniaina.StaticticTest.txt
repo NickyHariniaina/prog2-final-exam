@@ -1,0 +1,17 @@
+-------------------------------------------------------------------------------
+Test set: NickyHariniaina.StaticticTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.378 s <<< FAILURE! -- in NickyHariniaina.StaticticTest
+NickyHariniaina.StaticticTest.get_late_fees_ok -- Time elapsed: 0.233 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <1> but was: <[NickyHariniaina.FeesHistory.Fees@6e20b53a]>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at NickyHariniaina.StaticticTest.get_late_fees_ok(StaticticTest.java:46)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+
